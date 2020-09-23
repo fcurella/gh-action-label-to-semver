@@ -1,0 +1,28 @@
+name: "Get semver part"
+description: "Maps a Pull Request's labels to semver parts"
+branding:
+  icon: 'clock'
+  color: 'orange'
+inputs:
+  major:
+    description: 'Comma-separated map of labels for MAJOR bump'
+    required: false
+    default: ''
+  minor:
+    description: 'Comma-separated map of labels for MINOR bump'
+    required: false
+    default: ''
+  patch:
+    description: 'Comma-separated map of labels for PATCH bump'
+    required: false
+    default: ''
+  defaultPart:
+    description: 'Default SemVer part if none of the labels apply.'
+    required: false
+    default: 'null'
+outputs:
+  part:
+    description: 'the part to increment'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

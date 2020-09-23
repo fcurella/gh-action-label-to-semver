@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile-build --tag fcurella/gh-action-label-to-semver:latest
+    - name: Login on Docker Hub
+      env:
+        DOCKER_USER: ${{ secrets.HUB_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.HUB_PASSCODE }}
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | \
+        docker login \
+          --username "${{ secrets.DOCKER_USER }}" \
+          --password-stdin
+    - name: Publish the Docker image
+      run: docker push fcurella/gh-action-label-to-semver:latest
