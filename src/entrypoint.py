@@ -5,10 +5,10 @@ import os
 
 
 REPOSITORY = os.environ["GITHUB_REPOSITORY"]
-TOKEN = os.environ["GITHUB_TOKEN"]
 SHA = os.environ["GITHUB_SHA"]
 EVENT = os.environ["GITHUB_EVENT_NAME"]
 EVENT_PATH = os.environ["GITHUB_EVENT_PATH"]
+TOKEN = os.environ["INPUT_GITHUBTOKEN"]
 MAJOR_LIST = os.environ["INPUT_MAJOR"].split(',')
 MINOR_LIST = os.environ["INPUT_MINOR"].split(',')
 PATCH_LIST = os.environ["INPUT_PATCH"].split(',')

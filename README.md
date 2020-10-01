@@ -17,15 +17,17 @@ jobs:
         id: nextversion
         uses: "fcurella/gh-action-label-to-semver@main"
         with:
-            major: "bump-version-major"
-            minor: "bump-version-minor"
-            defaultPart: "patch"
+          major: "bump-version-major"
+          minor: "bump-version-minor"
+          defaultPart: "patch"
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Variables
 
 ### Inputs
 
+* `githubToken`: Your GitHub token. Required.
 * `major` - Comma-separated list of labels triggering a MAJOR version bump. Defaults to `''`.
 * `minor` - Comma-separated list of labels triggering a MINOR version bump. Defaults to `''`.
 * `patch` - Comma-separated list of labels triggering a PATCH version bump. Defaults to `''`.

@@ -4,6 +4,9 @@ branding:
   icon: 'clock'
   color: 'orange'
 inputs:
+  githubToken:
+    description: 'Your GitHub token'
+    required: true
   major:
     description: 'Comma-separated map of labels for MAJOR bump'
     required: false
