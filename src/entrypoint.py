@@ -58,7 +58,7 @@ def main():
 
         if label_part.value > part.value:
             part = label_part
-
+    print(f"Part: {part.name.lower()}")
     print(f"::set-output name=part::{part.name.lower()}")
 
 
