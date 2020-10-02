@@ -52,8 +52,11 @@ def main():
     part = Parts.__members__[DEFAULT_PART.upper()]
 
     for label in labels:
-        part_name = LABELMAP[label].upper()
-        label_part = Parts.__members__[part_name]
+        part_name = LABELMAP.get(label["name"])
+        if part_name is None:
+            continue
+
+        label_part = Parts.__members__[part_name.upper()]
         if label_part.value > part.value:
             part = label_part
 
