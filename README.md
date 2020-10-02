@@ -39,4 +39,4 @@ jobs:
 
 * `part` - The SemVer part that should be bumped. `'major'`, `'minor'`, `'patch'` or
   `'null'`. If multiple labels are matched, the highest part will be returned. If no labels
-  are matched, `inputs.defaultPart` is returned,
+  are matched, `inputs.defaultPart` is returned.
