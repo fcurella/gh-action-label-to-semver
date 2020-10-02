@@ -12,7 +12,7 @@ TOKEN = os.environ["INPUT_GITHUBTOKEN"]
 MAJOR_LIST = os.environ["INPUT_MAJOR"].split(',')
 MINOR_LIST = os.environ["INPUT_MINOR"].split(',')
 PATCH_LIST = os.environ["INPUT_PATCH"].split(',')
-DEFAULT_PART = os.environ["INPUT_DEFAULTPART"]
+DEFAULT_PART = os.environ["INPUT_DEFAULTPART"].upper()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -49,14 +49,13 @@ def main():
         payload = json.load(fh)
 
     labels = payload['pull_request']['labels']
-    part = Parts.__members__[DEFAULT_PART.upper()]
+    part = Parts.__members__[DEFAULT_PART]
 
     for label in labels:
-        part_name = LABELMAP.get(label["name"])
-        if part_name is None:
+        label_part = LABELMAP.get(label["name"])
+        if label_part is None:
             continue
 
-        label_part = Parts.__members__[part_name.upper()]
         if label_part.value > part.value:
             part = label_part
 
